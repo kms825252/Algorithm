@@ -5,7 +5,7 @@ while True:
         S = S - N
         N += 1
     else:
-        N = N + S
+        N -= 1
         break
 
 print(N)
