@@ -1,19 +1,20 @@
-# def fibo_dp(n):
-#     table[0] = 0
-#     table[1] = 1
-#     for i in range(2, n+1):
-#         table[i] = table[i-1] + table[i-2]
-#     return
-#
-# table = [0]*101
-# fibo_dp(100)
-# print(table[20])
+def f(i,N):
+    global answer
+    if i == N:
+        s= 0            # 부분 집합의 합
+        for i in range(N):
+            if bit[i]:
+                s += A[i]
+        if s == 10:
+            answer += 1
+    else:
+        bit[i] = 1
+        f(i+1, N)
+        bit[i] = 0
+        f(i+1, N)
 
-
-a = 0
-b = 1
-n = 20
-for _ in range(n-1):
-    a, b = b, a+b
-
-print(b)
+A = [1,2,3,4,5,6,7,8,9,10]
+bit = [0]* 10
+answer = 0
+f(0, 10)
+print(answer)
