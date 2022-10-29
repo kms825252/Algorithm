@@ -8,7 +8,7 @@ for i in range(9):
             my_max = case[i][j]
             my_i = i
             my_j = j
-
+            
 print(my_max)
 print(my_i+1, my_j+1)
 
