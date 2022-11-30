@@ -1,17 +1,16 @@
-def is_prime(a):
-    for i in range(2, int(pow(a, 0.5)) + 1):
-        if a % i == 0:
-            return False
-    if a == 1:
-        return False
-    return True
+def recursion(s, l, r):
+    global cnt
+    cnt += 1
+    if l >= r: return 1
+    elif s[l] != s[r]: return 0
+    else: return recursion(s, l+1, r-1)
 
+def isPalindrome(s):
+    global cnt
+    cnt = 0
+    return recursion(s, 0, len(s)-1)
 
 t = int(input())
-
-for i in range(t):
-    n = int(input())
-    for a in range(n // 2, 0, -1):
-        if is_prime(a) and is_prime(n - a):
-            print(a, n - a)
-            break
+for tc in range(1, t+1):
+    a = input()
+    print(isPalindrome(a), cnt)
