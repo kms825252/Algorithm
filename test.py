@@ -1,21 +1,23 @@
-# arr = [1 ,2 ,3 ]
-# n = len(arr)
-#
-# for i in range(1<<n):
-#     for j in range(n):
-#         if i & (1<< j):
-#             print(arr[j], end = ' ')
-#     print()
-#
+def split_and_sum(text):
+    if text == "":
+        return 0
 
-def perm(n,k):
-    if n == k:
-        print(p)
-    else:
-        for i in range(n,k):
-            p[n], p[i] = p[i], p[n]
-            perm(n+1,k)
-            p[n], p[i] = p[i], p[n]
+    return get_sum(get_int_lst(text.split('-')))
 
-p=[1,2,3]
-perm(0,3)
+
+def get_sum(ing_lst):
+    result = 0
+    for val in ing_lst:
+        result += int(val)
+    return result
+
+
+def get_int_lst(values):
+    ing_lst = []
+    for val in values:
+        ing_lst.append(int(val))
+    return ing_lst
+
+
+ret = split_and_sum("11-22-33")
+print(ret)
