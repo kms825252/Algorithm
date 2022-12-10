@@ -16,6 +16,8 @@ if ans_m < 10 :
     ans_m = '0' + str(ans_m)
 
 ans_h = b_h - a_h
+if ans_h < 0 :
+    ans_h = 24 + ans_h
 if ans_h < 10 :
     ans_h = '0' + str(ans_h)
 
