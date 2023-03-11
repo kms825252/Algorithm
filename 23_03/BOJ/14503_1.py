@@ -1,5 +1,4 @@
 import sys
-sys.setrecursionlimit(10**7)
 input = sys.stdin.readline
 
 result = 0
@@ -17,7 +16,7 @@ def func(r, c, d):
             result += 1
             arr[r][c] = 2
 
-
+        # 상하좌우 빈칸 확인
         for i in range(4):
             nr = r + dr[i]
             nc = c + dc[i]
@@ -25,36 +24,25 @@ def func(r, c, d):
             if arr[nr][nc] == 0:
                 break
 
+        # 상하좌우에 빈칸이 안나오고 for문이 끝나면 실행
+        # 후진 이동
         else:
             if d == 0:
-                new_r = r + 1
-                if arr[new_r][c] != 1: # 벽 안쪽이라 벽 벗어나는 거 생각 안해도 될듯
-                    r = new_r
-                    continue
-                else:
-                    break
+                r += 1
             elif d == 1:
-                new_c = c - 1
-                if arr[r][new_c] != 1:
-                    c = new_c
-                    continue
-                else:
-                    break
+                c -= 1
             elif d == 2:
-                new_r = r - 1
-                if arr[new_r][c] != 1:
-                    r = new_r
-                    continue
-                else:
-                    break
+                r -= 1
             else:
-                new_c = c + 1
-                if arr[r][new_c] != 1:
-                    c = new_c
-                    continue
-                else:
-                    break
+                c += 1
 
+            if arr[r][c] != 1:  # 벽 안쪽이라 벽 벗어나는 거 생각 안해도 될듯
+                continue
+            else:
+                break
+
+        # 상하좌우에 빈칸이 있으면
+        # 반시계 90도
         d -= 1
         if d < 0:
             d = 3
@@ -66,6 +54,6 @@ def func(r, c, d):
             c = nc
             continue
 
-func(r,c, d)
+func(r, c, d)
 print(result)
 
