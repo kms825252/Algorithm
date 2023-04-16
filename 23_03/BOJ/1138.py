@@ -1,6 +1,5 @@
 n = int(input())
 arr = list(map(int, input().split()))
-
 order = [0] * len(arr)
 
 for i in range(len(arr)):
