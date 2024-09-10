@@ -1,36 +1,28 @@
 from sys import stdin as ss
+import heapq
+
 
 '''
-시간초과
+53408KB 1396ms
+
+heapq를 이용하여 다익스트라
 '''
-
-
-def get_smallest_node():
-    min_val = INF
-    idx = 0
-
-    for i in range(1, n+1):
-        if time_table[i] < min_val and not visited[i]:
-            min_val = time_table[i]
-            idx = i
-
-    return idx
-
 
 def dijkstra(node):
+    q = []
+    heapq.heappush(q, (node, 0))
     time_table[node] = 0
-    visited[node] = 1
 
-    for i in relation[node]:
-        time_table[i[0]] = i[1]
+    while q:
+        new_node, new_sec = heapq.heappop(q)
 
-    for _ in range(n-1): # 시작 node를 뺀 나머지 node를 순회
-        now = get_smallest_node()
-        visited[now] = 1
+        if time_table[new_node] < new_sec:
+            continue
 
-        for j in relation[now]:
-            if time_table[now] + j[1] < time_table[j[0]]:
-                time_table[j[0]] = time_table[now] + j[1]
+        for i in relation[new_node]:
+            if new_sec + i[1] < time_table[i[0]]:
+                time_table[i[0]] = new_sec + i[1]
+                heapq.heappush(q, (i[0], time_table[i[0]]))
 
 
 
