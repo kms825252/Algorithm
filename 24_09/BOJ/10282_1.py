@@ -32,7 +32,6 @@ INF = 1e9
 for _ in range(tc):
     n, d, c = map(int, ss.readline().split())
     relation = [[] for _ in range(n+1)]
-    visited = [0] * (n+1)
     time_table = [INF] * (n+1)
     cnt = 0
     sec = 0
