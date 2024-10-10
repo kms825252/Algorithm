@@ -18,7 +18,6 @@ def dijkstra():
                 heapq.heappush(heap_data, (cost, i[0]))
 
 
-
 def bfs():
     q = deque()
     q.append(end)
@@ -27,7 +26,7 @@ def bfs():
         if now == start:
             continue
         for prev, cost in reversed_adj[now]:
-            if distance[now] == distance[prev] + cost and dropped[prev][now] == False:
+            if distance[now] == distance[prev] + cost and dropped[prev][now] is False:
                 dropped[prev][now] = True
                 q.append(prev)
 
